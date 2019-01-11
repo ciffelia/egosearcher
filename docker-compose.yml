@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  ego-searcher:
+    image: ciffelia/ego-searcher
+    build: .
+    restart: always
+    init: true
+    environment:
+      - TWITTER_CONSUMER_KEY
+      - TWITTER_CONSUMER_SECRET
+      - TWITTER_ACCESS_TOKEN_KEY
+      - TWITTER_ACCESS_TOKEN_SECRET
+      - SENDGRID_API_KEY

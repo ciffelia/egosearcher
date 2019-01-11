@@ -1,11 +1,15 @@
 language: node_js
-
 node_js: 10
+
+dist: xenial
+services:
+  - docker
 
 cache: yarn
 
 script:
   - yarn run lint
+  - docker-compose build
 
 # greenkeeper-lockfile
 before_install: yarn global add greenkeeper-lockfile@1
