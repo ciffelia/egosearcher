@@ -1,11 +1,9 @@
-const moment = require('moment')
 const Twit = require('twit')
 const { MailService } = require('@sendgrid/mail')
+const parseSnowFlake = require('./parseSnowFlake')
 
 class EgoSearcher {
   constructor (apiKeys) {
-    moment.locale('ja')
-
     this.twit = new Twit(apiKeys.twitter)
 
     this.sgMail = new MailService()
@@ -54,7 +52,7 @@ class EgoSearcher {
   static generateNotificationMessage (tweet) {
     const authorText = `${tweet.user.name} (@${tweet.user.screen_name})`
 
-    const createdAt = moment.utc(parseInt(tweet.timestamp_ms)).local().format('YYYY年M月D日(ddd) HH:mm:ss.SSS')
+    const createdAt = parseSnowFlake(tweet.id_str).local().locale('ja').format('YYYY年M月D日(ddd) HH:mm:ss.SSS')
 
     const tweetUrl = `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`
 
