@@ -11,12 +11,26 @@ class EgoSearcher {
     this.sgMail = new MailService()
     this.sgMail.setApiKey(apiKeys.sendGrid)
 
-    this.handleTweet = this.handleTweet.bind(this)
+    this.handleNewTweet = this.handleNewTweet.bind(this)
   }
 
   start () {
     this.stream = this.twit.stream('statuses/filter', { track: 'Ciffelia' })
-    this.stream.on('tweet', this.handleTweet)
+    this.stream.on('tweet', this.handleNewTweet)
+  }
+
+  handleNewTweet (tweet) {
+    if (!EgoSearcher.shouldNotify(tweet)) return
+
+    const subject = `${tweet.user.name}さんが言及しました`
+    const text = EgoSearcher.generateNotificationMessage(tweet)
+
+    this.sgMail.send({
+      from: EgoSearcher.mailFrom,
+      to: EgoSearcher.mailTo,
+      subject,
+      text
+    })
   }
 
   static shouldNotify (tweet) {
@@ -45,20 +59,6 @@ class EgoSearcher {
     const tweetUrl = `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`
 
     return `${tweet.text}\n― ${authorText} ${createdAt}\n${tweetUrl}`
-  }
-
-  handleTweet (tweet) {
-    if (!EgoSearcher.shouldNotify(tweet)) return
-
-    const subject = `${tweet.user.name}さんが言及しました`
-    const text = EgoSearcher.generateNotificationMessage(tweet)
-
-    this.sgMail.send({
-      from: EgoSearcher.mailFrom,
-      to: EgoSearcher.mailTo,
-      subject,
-      text
-    })
   }
 }
 
