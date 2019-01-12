@@ -1,3 +1,5 @@
+process.on('unhandledRejection', e => { throw e })
+
 const EgoSearcher = require('./EgoSearcher')
 
 const egoSearcher = new EgoSearcher({
