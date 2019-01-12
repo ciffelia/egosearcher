@@ -13,7 +13,7 @@ class EgoSearcher {
   }
 
   start () {
-    this.stream = this.twit.stream('statuses/filter', { track: 'Ciffelia' })
+    this.stream = this.twit.stream('statuses/filter', { track: EgoSearcher.StreamQuery })
     this.stream.on('tweet', this.handleNewTweet)
   }
 
@@ -61,6 +61,7 @@ class EgoSearcher {
 }
 
 EgoSearcher.ExcludedUserList = ['ciffelia', 'ciffelia_key', 'ciffelia_alt', 'ciffelia_nyan']
+EgoSearcher.StreamQuery = 'Ciffelia'
 
 EgoSearcher.mailFrom = {
   name: 'EgoSearcher',
