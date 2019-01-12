@@ -41,7 +41,7 @@ class EgoSearcher {
     const quotedUser = isQuoteTweet && tweet.quoted_status.user.screen_name
     const mentionedUsers = tweet.entities.user_mentions.map(user => user.screen_name)
 
-    for (const excludedUser of EgoSearcher.excludedUserList) {
+    for (const excludedUser of EgoSearcher.ExcludedUserList) {
       if (author === excludedUser || quotedUser === excludedUser) return false
       if (mentionedUsers.includes(excludedUser)) return false
     }
@@ -60,7 +60,7 @@ class EgoSearcher {
   }
 }
 
-EgoSearcher.excludedUserList = ['ciffelia', 'ciffelia_key', 'ciffelia_alt', 'ciffelia_nyan']
+EgoSearcher.ExcludedUserList = ['ciffelia', 'ciffelia_key', 'ciffelia_alt', 'ciffelia_nyan']
 
 EgoSearcher.mailFrom = {
   name: 'EgoSearcher',
