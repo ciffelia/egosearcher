@@ -130,10 +130,10 @@ class EgoSearcher {
   }
 }
 
-EgoSearcher.ExcludedUserList = ['ciffelia', 'ciffelia_key', 'ciffelia_alt', 'ciffelia_nyan']
+EgoSearcher.ExcludedUserList = ['ciffelia', 'ciffelia_nyan', 'ciffelia_ek']
 EgoSearcher.StreamQuery = 'Ciffelia'
-EgoSearcher.standardSearchQuery = 'Ciffelia -filter:retweets -from:ciffelia -@ciffelia -from:ciffelia_key -@ciffelia_key -from:ciffelia_alt -@ciffelia_alt -from:ciffelia_nyan -@ciffelia_nyan'
-EgoSearcher.premiumSearchQuery = 'Ciffelia -from:ciffelia -@ciffelia -from:ciffelia_key -@ciffelia_key -from:ciffelia_alt -@ciffelia_alt -from:ciffelia_nyan -@ciffelia_nyan'
+EgoSearcher.standardSearchQuery = 'Ciffelia -filter:retweets -from:ciffelia -@ciffelia -from:ciffelia_nyan -@ciffelia_nyan -from:ciffelia_ek -@ciffelia_ek'
+EgoSearcher.premiumSearchQuery = 'Ciffelia -from:ciffelia -@ciffelia -from:ciffelia_nyan -@ciffelia_nyan -from:ciffelia_ek -@ciffelia_ek'
 
 EgoSearcher.mailFrom = {
   name: 'EgoSearcher',
