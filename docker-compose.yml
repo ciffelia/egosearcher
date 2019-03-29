@@ -6,5 +6,7 @@ services:
     build: .
     restart: always
     init: true
+    environment:
+      TZ: Asia/Tokyo
     volumes:
       - ./config.js:/root/EgoSearcher/config.js
