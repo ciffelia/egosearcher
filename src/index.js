@@ -1,10 +1,10 @@
 process.on('unhandledRejection', e => { throw e })
 
-const Notifier = require('./Notifier')
+const EmailNotifier = require('./EmailNotifier')
 const Searcher = require('./Searcher')
 const config = require('../config')
 
-const notifier = new Notifier(config.sendGridApiKey)
+const notifier = new EmailNotifier(config.notify.email)
 
 const apps = config.twitter.map(account => new Searcher(account, notifier))
 

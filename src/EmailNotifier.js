@@ -1,10 +1,12 @@
 const { MailService } = require('@sendgrid/mail')
 const parseSnowFlake = require('./parseSnowFlake')
 
-class Notifier {
-  constructor (sendGridApiKey) {
+class EmailNotifier {
+  constructor (config) {
+    this.config = config
+
     this.mailService = new MailService()
-    this.mailService.setApiKey(sendGridApiKey)
+    this.mailService.setApiKey(config.sendGridApiKey)
 
     this.notifiedTweets = new Set()
   }
@@ -14,11 +16,11 @@ class Notifier {
     this.notifiedTweets.add(tweet.id_str)
 
     const subject = `${tweet.user.name}さんが言及しました`
-    const text = Notifier.generateNotificationMessage(tweet)
+    const text = EmailNotifier.generateNotificationMessage(tweet)
 
     this.mailService.send({
-      from: Notifier.mailFrom,
-      to: Notifier.mailTo,
+      from: this.config.from,
+      to: this.config.to,
       subject,
       text
     })
@@ -35,13 +37,4 @@ class Notifier {
   }
 }
 
-Notifier.mailFrom = {
-  name: 'EgoSearcher',
-  email: 'egosearcher@ciffelia.com'
-}
-Notifier.mailTo = {
-  name: 'Ciffelia',
-  email: 'mc.prince.0203@gmail.com'
-}
-
-module.exports = Notifier
+module.exports = EmailNotifier

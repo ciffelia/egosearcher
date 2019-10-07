@@ -1,5 +1,18 @@
 module.exports = {
-  sendGridApiKey: 'SENDGRID_API_KEY',
+  notify: {
+    email: {
+      sendGridApiKey: 'YOUR_SENDGRID_API_KEY',
+      from: {
+        name: 'EgoSearcher',
+        email: 'egosearcher@example.com'
+      },
+      to: {
+        name: 'John Doe',
+        email: 'john@doe.com'
+      }
+    }
+  },
+
   twitter: [
     {
       consumer_key: 'TWITTER_CONSUMER_KEY',
