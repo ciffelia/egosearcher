@@ -2,10 +2,9 @@ const Twit = require('twit')
 
 class Searcher {
   constructor (config, notifier) {
-    const { followingListId, ...apiConfig } = config
+    this.config = config
 
-    this.followingListId = followingListId
-    this.twit = new Twit(apiConfig)
+    this.twit = new Twit(config.apiKeys)
 
     this.latestFetchedTweet = null
 
@@ -22,7 +21,7 @@ class Searcher {
 
   async checkTimeLine (isInitialExecution) {
     const { data: results } = await this.twit.get('lists/statuses', {
-      list_id: this.followingListId,
+      list_id: this.config.followingListId,
       since_id: isInitialExecution ? undefined : this.latestFetchedTweet,
       count: 200,
       include_rts: false
@@ -42,7 +41,28 @@ class Searcher {
 
   handleNewTweet (tweet) {
     tweet.text = Searcher.unescapeTweetText(tweet.text)
-    if (Searcher.shouldNotify(tweet)) this.notifier.push(tweet)
+    if (this.shouldNotify(tweet)) this.notifier.push(tweet)
+  }
+
+  shouldNotify (tweet) {
+    const isRetweet = !!tweet.retweeted_status
+    if (isRetweet) return false
+
+    const includesQuery = this.config.queries.some(query => tweet.text.toLowerCase().includes(query))
+    if (!includesQuery) return false
+
+    const isQuoteTweet = !!tweet.quoted_status
+
+    const author = tweet.user.screen_name
+    const quotedUser = isQuoteTweet && tweet.quoted_status.user.screen_name
+    const mentionedUsers = tweet.entities.user_mentions.map(user => user.screen_name)
+
+    for (const excludedUser of this.config.excludedUsers) {
+      if (author === excludedUser || quotedUser === excludedUser) return false
+      if (mentionedUsers.includes(excludedUser)) return false
+    }
+
+    return true
   }
 
   static unescapeTweetText (text) {
@@ -51,30 +71,6 @@ class Searcher {
       .replace(/&gt;/g, '>')
       .replace(/&amp;/g, '&')
   }
-
-  static shouldNotify (tweet) {
-    const isRetweet = !!tweet.retweeted_status
-    if (isRetweet) return false
-
-    const includesKeyword = Searcher.Keywords.some(keyword => tweet.text.toLowerCase().includes(keyword))
-    if (!includesKeyword) return false
-
-    const isQuoteTweet = !!tweet.quoted_status
-
-    const author = tweet.user.screen_name
-    const quotedUser = isQuoteTweet && tweet.quoted_status.user.screen_name
-    const mentionedUsers = tweet.entities.user_mentions.map(user => user.screen_name)
-
-    for (const excludedUser of Searcher.ExcludedUserList) {
-      if (author === excludedUser || quotedUser === excludedUser) return false
-      if (mentionedUsers.includes(excludedUser)) return false
-    }
-
-    return true
-  }
 }
-
-Searcher.ExcludedUserList = ['ciffelia', 'ciffelia_nyan', 'ciffelia_ek']
-Searcher.Keywords = ['ciffelia', 'しふぇ', 'しふえ']
 
 module.exports = Searcher

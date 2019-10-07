@@ -6,7 +6,7 @@ const config = require('../config')
 
 const notifier = new EmailNotifier(config.notify.email)
 
-const apps = config.twitter.map(account => new Searcher(account, notifier))
+const apps = config.search.map(searchConfig => new Searcher(searchConfig, notifier))
 
 for (const app of apps) {
   app.start()

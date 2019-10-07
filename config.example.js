@@ -13,13 +13,17 @@ module.exports = {
     }
   },
 
-  twitter: [
+  search: [
     {
-      consumer_key: 'TWITTER_CONSUMER_KEY',
-      consumer_secret: 'TWITTER_CONSUMER_SECRET',
-      access_token: 'TWITTER_ACCESS_TOKEN_KEY',
-      access_token_secret: 'TWITTER_ACCESS_TOKEN_SECRET',
-      followingListId: 'TWITTER_FOLLOWING_LIST_ID'
+      apiKeys: {
+        consumer_key: 'TWITTER_CONSUMER_KEY',
+        consumer_secret: 'TWITTER_CONSUMER_SECRET',
+        access_token: 'TWITTER_ACCESS_TOKEN_KEY',
+        access_token_secret: 'TWITTER_ACCESS_TOKEN_SECRET'
+      },
+      followingListId: 'TWITTER_FOLLOWING_LIST_ID',
+      queries: ['#JohnDoe', 'John'],
+      excludedUsers: ['john_doe', 'john_doe_2']
     }
   ]
 }
