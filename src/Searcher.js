@@ -5,6 +5,7 @@ class Searcher {
     this.config = config
 
     this.twit = new Twit(config.apiKeys)
+    this.normalizedQueries = config.queries.map(query => Searcher.normalizeText(query))
 
     this.latestFetchedTweet = null
 
@@ -48,7 +49,7 @@ class Searcher {
     const isRetweet = !!tweet.retweeted_status
     if (isRetweet) return false
 
-    const includesQuery = this.config.queries.some(query => tweet.text.toLowerCase().includes(query))
+    const includesQuery = this.normalizedQueries.some(query => Searcher.normalizeText(tweet.text).includes(query))
     if (!includesQuery) return false
 
     const isQuoteTweet = !!tweet.quoted_status
@@ -63,6 +64,13 @@ class Searcher {
     }
 
     return true
+  }
+
+  static normalizeText (text) {
+    return text
+      .normalize('NFKC')
+      .replace(/[\s\u200B-\u200D\uFEFF]/g, '')
+      .toLowerCase()
   }
 
   static unescapeTweetText (text) {
