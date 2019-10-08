@@ -69,7 +69,10 @@ class Searcher {
   static normalizeText (text) {
     return text
       .normalize('NFKC')
-      .replace(/[\s\u200B-\u200D\uFEFF]/g, '')
+      // Remove spaces
+      .replace(/[\s\u{200B}-\u{200D}\u{FEFF}]/gu, '')
+      // Remove symbols
+      .replace(/[\u{21}-\u{2f}\u{3a}-\u{40}\u{5b}-\u{60}\u{7b}-\u{7e}]/gu, '')
       .toLowerCase()
   }
 
