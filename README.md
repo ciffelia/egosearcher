@@ -1,4 +1,4 @@
 # EgoSearcher
-[![Build Status](https://travis-ci.com/ciffelia/EgoSearcher.svg?branch=master)](https://travis-ci.com/ciffelia/EgoSearcher)
-[![Greenkeeper badge](https://badges.greenkeeper.io/ciffelia/EgoSearcher.svg)](https://greenkeeper.io/)
+[![CI Status](https://github.com/ciffelia/EgoSearcher/workflows/CI/badge.svg?branch=master)](https://github.com/ciffelia/EgoSearcher/actions?query=workflow%3ACI+branch%3Amaster)
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=ciffelia/EgoSearcher)](https://dependabot.com)
 [![MIT License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE)
