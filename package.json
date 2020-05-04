@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@sendgrid/mail": "^6.5.3",
-    "moment": "^2.24.0",
+    "moment": "^2.25.3",
     "twit": "^2.2.11"
   },
   "devDependencies": {
