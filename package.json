@@ -16,6 +16,6 @@
     "twit": "^2.2.11"
   },
   "devDependencies": {
-    "standard": "^14.3.1"
+    "standard": "^14.3.4"
   }
 }
