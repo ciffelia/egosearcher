@@ -1,12 +1,13 @@
 {
   "name": "ego-searcher",
-  "author": "Ciffelia <mc.prince.0203@gmail.com>",
-  "main": "src/index.js",
-  "repository": "https://github.com/ciffelia/EgoSearcher.git",
-  "license": "MIT",
   "private": true,
+  "author": "Ciffelia <mc.prince.0203@gmail.com> (https://ciffelia.com/)",
+  "repository": "github:ciffelia/EgoSearcher",
+  "homepage": "https://github.com/ciffelia/EgoSearcher#readme",
+  "bugs": "https://github.com/ciffelia/EgoSearcher/issues",
+  "license": "MIT",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "node ./src/index.js",
     "lint": "standard",
     "fix": "standard --fix"
   },
