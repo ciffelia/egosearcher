@@ -9,4 +9,4 @@ services:
     environment:
       TZ: Asia/Tokyo
     volumes:
-      - ./config.js:/root/EgoSearcher/config.js
+      - ./config.js:/home/egosearcher/config.js
