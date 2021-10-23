@@ -1,22 +1,24 @@
 {
   "name": "ego-searcher",
   "private": true,
+  "description": "Automated egosearching on Twitter",
   "author": "Ciffelia <mc.prince.0203@gmail.com> (https://ciffelia.com/)",
+  "license": "MIT",
   "repository": "github:ciffelia/EgoSearcher",
   "homepage": "https://github.com/ciffelia/EgoSearcher#readme",
   "bugs": "https://github.com/ciffelia/EgoSearcher/issues",
-  "license": "MIT",
   "scripts": {
     "start": "node ./src/index.js",
     "lint": "standard",
     "fix": "standard --fix"
   },
   "dependencies": {
-    "@sendgrid/mail": "^7.2.0",
-    "moment": "^2.26.0",
+    "@sendgrid/mail": "^7.5.0",
+    "moment": "^2.29.1",
     "twit": "^2.2.11"
   },
   "devDependencies": {
-    "standard": "^14.3.4"
-  }
+    "standard": "^16.0.4"
+  },
+  "packageManager": "yarn@3.0.2"
 }

@@ -1,10 +1,7 @@
-version: '3.7'
-
 services:
   ego-searcher:
-    image: ciffelia/ego-searcher
-    build: .
-    restart: always
+    image: ghcr.io/ciffelia/ego-searcher
+    restart: unless-stopped
     init: true
     environment:
       TZ: Asia/Tokyo

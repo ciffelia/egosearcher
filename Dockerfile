@@ -1,4 +1,4 @@
-FROM node:12.18.0-alpine
+FROM node:14-alpine
 
 # Switch to non-root user
 RUN adduser -D egosearcher
@@ -7,11 +7,9 @@ WORKDIR /home/egosearcher
 
 ENV NODE_ENV production
 
-COPY --chown=egosearcher:egosearcher ./package.json ./yarn.lock ./
-
-RUN yarn install --frozen-lockfile --production && \
-    yarn cache clean
-
 COPY --chown=egosearcher:egosearcher . .
 
-ENTRYPOINT yarn run start
+RUN yarn install --immutable && \
+    yarn cache clean --mirror
+
+ENTRYPOINT ["yarn", "run", "start"]
