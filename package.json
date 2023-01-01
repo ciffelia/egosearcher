@@ -13,12 +13,12 @@
     "fix": "standard --fix"
   },
   "dependencies": {
-    "@sendgrid/mail": "^7.5.0",
-    "moment": "^2.29.1",
+    "@sendgrid/mail": "^7.7.0",
+    "moment": "^2.29.4",
     "twit": "^2.2.11"
   },
   "devDependencies": {
-    "standard": "^16.0.4"
+    "standard": "^17.0.0"
   },
-  "packageManager": "yarn@3.0.2"
+  "packageManager": "yarn@3.3.1"
 }

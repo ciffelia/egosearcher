@@ -6,4 +6,4 @@ services:
     environment:
       TZ: Asia/Tokyo
     volumes:
-      - ./config.js:/home/egosearcher/config.js
+      - ./config.js:/config/config.js:ro

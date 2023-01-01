@@ -1,11 +1,12 @@
-FROM node:14-alpine
+FROM node:18.12.1-bullseye-slim
 
 # Switch to non-root user
-RUN adduser -D egosearcher
+RUN useradd --create-home --user-group egosearcher
 USER egosearcher
 WORKDIR /home/egosearcher
 
 ENV NODE_ENV production
+ENV EGOSEARCHER_CONFIG /config/config.js
 
 COPY --chown=egosearcher:egosearcher . .
 
