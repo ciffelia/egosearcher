@@ -1,0 +1,37 @@
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: [
+    'config:base',
+    ':semanticCommitsDisabled',
+    ':prHourlyLimitNone',
+    ':prConcurrentLimitNone',
+  ],
+  timezone: 'Asia/Tokyo',
+  schedule: ['every weekend'],
+  packageRules: [
+    {
+      matchManagers: ['npm'],
+      rangeStrategy: 'bump',
+    },
+    {
+      matchManagers: ['npm'],
+      matchPackageNames: ['standard', 'yarn'],
+      matchUpdateTypes: ['minor', 'patch'],
+      matchCurrentVersion: '!/^0/',
+      automerge: true,
+    },
+    {
+      matchManagers: ['dockerfile'],
+      matchPackageNames: ['node'],
+      matchUpdateTypes: ['minor', 'patch'],
+      matchCurrentVersion: '!/^0/',
+      automerge: true,
+    },
+    {
+      matchManagers: ['dockerfile'],
+      matchPackageNames: ['node'],
+      // LTS only
+      allowedVersions: '/^\\d*[02468]\\./',
+    },
+  ],
+}
