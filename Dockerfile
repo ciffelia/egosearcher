@@ -21,7 +21,9 @@ WORKDIR /home/egosearcher/egosearcher
 ENV NODE_ENV production
 ENV EGOSEARCHER_CONFIG /config/config.js
 
-COPY --from=builder --chown=egosearcher:egosearcher . .
+COPY --chown=egosearcher:egosearcher . .
+COPY --from=builder --chown=egosearcher:egosearcher /home/egosearcher/egosearcher/.yarn/cache ./.yarn/cache
+COPY --from=builder --chown=egosearcher:egosearcher /home/egosearcher/egosearcher/.pnp.* ./
 
 RUN yarn install --immutable && \
     yarn cache clean --mirror
