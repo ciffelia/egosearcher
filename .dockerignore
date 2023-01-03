@@ -17,9 +17,12 @@
 !.yarn/releases
 !.yarn/sdks
 .pnp.*
+node_modules
+
+# TypeScript
+**/*.tsbuildinfo
 
 # WebStorm
 .idea
 
-# Config file
 config.js
