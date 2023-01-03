@@ -1,0 +1,11 @@
+# Yarn
+/.yarn
+/.pnp.*
+/node_modules
+
+# WebStorm
+/.idea
+
+/dist
+/config.example.js
+/config.js

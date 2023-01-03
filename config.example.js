@@ -1,29 +1,27 @@
-module.exports = {
-  notify: {
-    email: {
-      sendGridApiKey: 'YOUR_SENDGRID_API_KEY',
-      from: {
-        name: 'EgoSearcher',
-        email: 'egosearcher@example.com'
+export default [
+  {
+    name: 'test',
+    twitter: {
+      api: {
+        consumerKey: 'TWITTER_CONSUMER_KEY',
+        consumerSecret: 'TWITTER_CONSUMER_SECRET',
+        accessToken: 'TWITTER_ACCESS_TOKEN_KEY',
+        accessTokenSecret: 'TWITTER_ACCESS_TOKEN_SECRET',
       },
-      to: {
-        name: 'John Doe',
-        email: 'john@doe.com'
-      }
-    }
+      search: {
+        listId: 'TWITTER_FOLLOWING_LIST_ID',
+        pollingInterval: 10000,
+        queries: ['#JohnDoe', 'John'],
+        excludedUserIds: [
+          // @jack
+          '12',
+          // @twitter
+          '783214',
+        ],
+      },
+    },
+    slack: {
+      webhookUrl: 'https://hooks.slack.com/foo/bar',
+    },
   },
-
-  search: [
-    {
-      apiKeys: {
-        consumer_key: 'TWITTER_CONSUMER_KEY',
-        consumer_secret: 'TWITTER_CONSUMER_SECRET',
-        access_token: 'TWITTER_ACCESS_TOKEN_KEY',
-        access_token_secret: 'TWITTER_ACCESS_TOKEN_SECRET'
-      },
-      followingListId: 'TWITTER_FOLLOWING_LIST_ID',
-      queries: ['#JohnDoe', 'John'],
-      excludedUsers: ['john_doe', 'john_doe_2']
-    }
-  ]
-}
+]
