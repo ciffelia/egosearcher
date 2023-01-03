@@ -15,7 +15,15 @@
     },
     {
       matchManagers: ['npm'],
-      matchPackageNames: ['standard', 'yarn'],
+      matchPackagePatterns: [
+        '^@slack/types$',
+        '^@tsconfig/',
+        '^@types/',
+        '^@typescript-eslint/',
+        '^eslint',
+        '^prettier$',
+        '^yarn$',
+      ],
       matchUpdateTypes: ['minor', 'patch'],
       matchCurrentVersion: '!/^0/',
       automerge: true,
