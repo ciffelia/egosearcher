@@ -27,7 +27,7 @@ jobs:
 
   build-and-push-docker:
     runs-on: ubuntu-22.04
-    needs: lint
+    needs: [lint, typecheck]
     steps:
       - name: Setup QEMU
         uses: docker/setup-qemu-action@v2
