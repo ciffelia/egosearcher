@@ -16,13 +16,14 @@
     {
       matchManagers: ['npm'],
       matchPackagePatterns: [
+        '^node$',
+        '^yarn$',
         '^@slack/types$',
         '^@tsconfig/',
         '^@types/',
         '^@typescript-eslint/',
         '^eslint',
         '^prettier$',
-        '^yarn$',
       ],
       matchUpdateTypes: ['minor', 'patch'],
       matchCurrentVersion: '!/^0/',
