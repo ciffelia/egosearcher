@@ -10,7 +10,7 @@ export const loadConfig = async (
     throw new Error('EGOSEARCHER_CONFIG is not set.')
   }
 
-  const fullPath = path.join(process.cwd(), configPath)
+  const fullPath = path.resolve(process.cwd(), configPath)
   logger.info(`Loading config from ${fullPath}`)
 
   // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires
