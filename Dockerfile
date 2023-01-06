@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM node:18.12.1-bullseye-slim as builder
+FROM --platform=$BUILDPLATFORM node:18.12.1-bullseye-slim as deps-downloader
 
 # Switch to unpriviledged user
 RUN useradd --create-home --user-group egosearcher
@@ -9,7 +9,7 @@ ENV NODE_ENV production
 
 COPY --chown=egosearcher:egosearcher . .
 
-RUN yarn install --immutable
+RUN yarn install --immutable --mode=skip-build
 
 FROM node:18.12.1-bullseye-slim
 
@@ -22,8 +22,8 @@ ENV NODE_ENV production
 ENV EGOSEARCHER_CONFIG /config/config.js
 
 COPY --chown=egosearcher:egosearcher . .
-COPY --from=builder --chown=egosearcher:egosearcher /home/egosearcher/egosearcher/.yarn/cache ./.yarn/cache
-COPY --from=builder --chown=egosearcher:egosearcher /home/egosearcher/egosearcher/.pnp.* ./
+COPY --from=deps-downloader --chown=egosearcher:egosearcher /home/egosearcher/egosearcher/.yarn/cache ./.yarn/cache
+COPY --from=deps-downloader --chown=egosearcher:egosearcher /home/egosearcher/egosearcher/.pnp.* ./
 
 RUN yarn install --immutable && \
     yarn cache clean --mirror
