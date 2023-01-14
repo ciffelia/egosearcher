@@ -679,7 +679,7 @@ __metadata:
     prettier: ^2.8.3
     ts-node: ^10.9.1
     tsconfig-paths: ^4.1.2
-    twitter-api-v2: ^1.13.0
+    twitter-api-v2: ^1.14.0
     typescript: 4.9.4
     zod: ^3.20.2
   languageName: unknown
@@ -2467,10 +2467,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"twitter-api-v2@npm:^1.13.0":
-  version: 1.13.0
-  resolution: "twitter-api-v2@npm:1.13.0"
-  checksum: 2140af480fb24a75d4979134bdda18d5fefd6687485c3a25e51d76b27b565b3fb7460d1f9755c0f5f877dac28a077e60d29a31cc2288c4ee0b797179edd70681
+"twitter-api-v2@npm:^1.14.0":
+  version: 1.14.0
+  resolution: "twitter-api-v2@npm:1.14.0"
+  checksum: 16f407d2d065eca5b3b08fa7fc52333f3a91ed1f4f11f558a3bfe1c3a04a822cb0ac5853957564ae9f3b56a085e05896f90a96cb6df4861347cbb7106072254b
   languageName: node
   linkType: hard
 
