@@ -680,7 +680,7 @@ __metadata:
     eslint: ^8.33.0
     eslint-config-prettier: ^8.6.0
     eslint-config-xo: ^0.43.1
-    eslint-config-xo-typescript: ^0.55.1
+    eslint-config-xo-typescript: ^0.56.0
     npm-run-all: ^4.1.5
     pino: ^8.8.0
     pino-pretty: ^9.1.1
@@ -780,15 +780,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-xo-typescript@npm:^0.55.1":
-  version: 0.55.1
-  resolution: "eslint-config-xo-typescript@npm:0.55.1"
+"eslint-config-xo-typescript@npm:^0.56.0":
+  version: 0.56.0
+  resolution: "eslint-config-xo-typescript@npm:0.56.0"
   peerDependencies:
     "@typescript-eslint/eslint-plugin": ">=5.43.0"
     "@typescript-eslint/parser": ">=5.43.0"
     eslint: ">=8.0.0"
     typescript: ">=4.4"
-  checksum: d3d26d2348594d0b7f22995fba7b8d9681be150a0607026397db27b529e225c4cdfa982b05107a9d4a4b8b32063b0ac9d35742ec28d9a4e6719891c6209f367e
+  checksum: 1811eeee6a5b7fbcc567d26f51b90a01cd9254d732cabfd30a3cc092e56fd8203ae4b84caefe3ae29f7e4ff28a5932fbd24c495d51fdc2f314b3e61fe34afbac
   languageName: node
   linkType: hard
 
