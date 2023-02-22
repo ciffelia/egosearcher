@@ -20,7 +20,7 @@
     "@slack/types": "^2.8.0",
     "@slack/webhook": "^6.1.0",
     "date-fns": "^2.29.3",
-    "pino": "^8.8.0",
+    "pino": "^8.11.0",
     "twitter-api-v2": "^1.14.0",
     "zod": "^3.20.2"
   },
