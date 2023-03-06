@@ -7,11 +7,12 @@
     ':prConcurrentLimitNone',
   ],
   timezone: 'Asia/Tokyo',
-  schedule: ['every weekend'],
+  schedule: ['before 9am on Saturday'],
   packageRules: [
     {
       matchManagers: ['npm'],
       rangeStrategy: 'bump',
+      dependencyDashboardApproval: true,
     },
     {
       matchManagers: ['npm'],
@@ -34,6 +35,7 @@
       matchPackageNames: ['node'],
       matchUpdateTypes: ['minor', 'patch'],
       matchCurrentVersion: '!/^0/',
+      dependencyDashboardApproval: false,
       automerge: true,
     },
     {
